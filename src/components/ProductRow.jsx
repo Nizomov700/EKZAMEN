@@ -1,10 +1,8 @@
 import { useDispatch } from "react-redux";
 import { increment, decrement } from "../store/productsSlice";
-
 const ProductRow = ({ id, name, available, price, quantity }) => {
   const dispatch = useDispatch();
   const total = (price * quantity).toFixed(2);
-
   return (
     <tr>
       <td>{id}</td>
@@ -27,5 +25,4 @@ const ProductRow = ({ id, name, available, price, quantity }) => {
     </tr>
   );
 };
-
 export default ProductRow;

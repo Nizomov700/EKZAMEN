@@ -20,11 +20,10 @@ const ProductList = () => {
   );
   const discount = total > 1000 ? total * 0.1 : 0;
   const finalTotal = (total - discount).toFixed(2);
-
+  const dicount = finalTotal * 0.1;
   return (
     <StyledWrapper>
       <Header />
-
       <StyledTable>
         <thead>
           <tr>
@@ -57,17 +56,15 @@ const ProductList = () => {
           )}
         </tbody>
       </StyledTable>
-
       <StyledLastDiv>
         <h2>Order summary</h2>
+        {finalTotal > 1000 ? <p>Discount {`$ ${dicount}`} </p> : null}
         <p>Total: {loading ? "Loading..." : error ? "—" : `$${finalTotal}`}</p>
       </StyledLastDiv>
     </StyledWrapper>
   );
 };
-
 export default ProductList;
-
 const StyledWrapper = styled.div`
   text-align: center;
 `;

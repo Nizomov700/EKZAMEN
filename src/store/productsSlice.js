@@ -1,7 +1,5 @@
-// src/store/productsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getProducts } from "../api/productsApi";
-
 export const fetchProducts = createAsyncThunk(
   "products/fetch",
   async (_, { rejectWithValue }) => {
@@ -9,14 +7,13 @@ export const fetchProducts = createAsyncThunk(
       const data = await getProducts();
       return data.map((product) => ({
         ...product,
-        quantity: 0, // default
+        quantity: 0,
       }));
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
-
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -54,6 +51,5 @@ const productsSlice = createSlice({
       });
   },
 });
-
 export const { increment, decrement } = productsSlice.actions;
 export default productsSlice.reducer;
